@@ -1,22 +1,21 @@
 import { useState, useEffect, useRef } from "react";
 import { Menu, X, Mail, Phone, Github, Linkedin, Code2 } from "lucide-react";
-import { useSectionContext } from "@/context/SectionContext";
+import { Link } from "react-router-dom";
 import MagneticButton from "@/components/MagneticButton";
 
-const animationMap: Record<string, string> = {
-  about: "slide-in-left-lg",
-  skills: "slide-in-right-lg",
-  experience: "converge-to-center",
-  "position-of-responsibility": "center-reveal",
-  "cocurricular-activities": "clip-reveal-right",
-  projects: "radial-inward",
-};
+const navItems = [
+  { id: "about", label: "About", path: "/about" },
+  { id: "skills", label: "Skills", path: "/skills" },
+  { id: "experience", label: "Experience", path: "/experience" },
+  { id: "position-of-responsibility", label: "Responsibilities", path: "/position-of-responsibility" },
+  { id: "cocurricular-activities", label: "Activities", path: "/activities" },
+  { id: "projects", label: "Projects", path: "/projects" },
+];
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [contactOpen, setContactOpen] = useState(false);
   const contactRef = useRef<HTMLDivElement>(null);
-  const { setActiveSection, setAnimationType, activeSection, setExitingSection } = useSectionContext();
 
   // Close contact dropdown when clicking outside
   useEffect(() => {
@@ -34,43 +33,6 @@ export default function Header() {
     }
   }, [contactOpen]);
 
-  const scrollToSection = (id: string) => {
-    // Don't trigger animation if already on the section
-    if (activeSection === id) return;
-
-    // Trigger exit animation on current section
-    if (activeSection) {
-      setExitingSection(activeSection);
-    }
-    
-    const animType = animationMap[id] || "converge-to-center";
-    setAnimationType(animType);
-    
-    // Set new active section after a brief delay to allow exit animation to start
-    setTimeout(() => {
-      setActiveSection(id);
-      setExitingSection(null);
-      
-      // Scroll into view after animation completes (600ms animation + buffer)
-      setTimeout(() => {
-        const element = document.getElementById(id);
-        if (element) {
-          // Account for fixed header (64px) + padding
-          const headerHeight = 64;
-          const elementPosition = element.getBoundingClientRect().top + window.scrollY;
-          const scrollPosition = elementPosition - headerHeight - 20; // 20px extra padding
-          
-          window.scrollTo({
-            top: scrollPosition,
-            behavior: "smooth"
-          });
-        }
-      }, 650); // Wait for animation to complete
-      
-      setIsOpen(false);
-    }, 100);
-  };
-
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
       <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
@@ -86,52 +48,20 @@ export default function Header() {
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-1">
-          <button
-            onClick={() => scrollToSection("about")}
-            className="px-3 py-2 text-slate-700 hover:text-blue-600 active:animate-btn-click transition-colors font-medium relative overflow-hidden group"
-          >
-            About
-            <span className="absolute inset-0 bg-blue-600 opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-lg"></span>
-          </button>
-          <button
-            onClick={() => scrollToSection("skills")}
-            className="px-3 py-2 text-slate-700 hover:text-blue-600 active:animate-btn-click transition-colors font-medium relative overflow-hidden group"
-          >
-            Skills
-            <span className="absolute inset-0 bg-blue-600 opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-lg"></span>
-          </button>
-          <button
-            onClick={() => scrollToSection("experience")}
-            className="px-3 py-2 text-slate-700 hover:text-blue-600 active:animate-btn-click transition-colors font-medium relative overflow-hidden group"
-          >
-            Experience
-            <span className="absolute inset-0 bg-blue-600 opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-lg"></span>
-          </button>
-          <button
-            onClick={() => scrollToSection("position-of-responsibility")}
-            className="px-3 py-2 text-slate-700 hover:text-blue-600 active:animate-btn-click transition-colors font-medium text-sm relative overflow-hidden group"
-          >
-            Responsibilities
-            <span className="absolute inset-0 bg-blue-600 opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-lg"></span>
-          </button>
-          <button
-            onClick={() => scrollToSection("cocurricular-activities")}
-            className="px-3 py-2 text-slate-700 hover:text-blue-600 active:animate-btn-click transition-colors font-medium text-sm relative overflow-hidden group"
-          >
-            Activities
-            <span className="absolute inset-0 bg-blue-600 opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-lg"></span>
-          </button>
-          <button
-            onClick={() => scrollToSection("projects")}
-            className="px-3 py-2 text-slate-700 hover:text-blue-600 active:animate-btn-click transition-colors font-medium relative overflow-hidden group"
-          >
-            Projects
-            <span className="absolute inset-0 bg-blue-600 opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-lg"></span>
-          </button>
+          {navItems.map(item => (
+            <Link
+              key={item.id}
+              to={item.path}
+              className="px-3 py-2 text-slate-700 hover:text-blue-600 transition-colors font-medium relative overflow-hidden group text-sm"
+            >
+              {item.label}
+              <span className="absolute inset-0 bg-blue-600 opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-lg"></span>
+            </Link>
+          ))}
 
           {/* Contact Dropdown */}
           <div className="relative" ref={contactRef}>
-            <button
+            <MagneticButton
               onClick={() => setContactOpen(!contactOpen)}
               className="px-4 py-2 mx-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 active:animate-btn-click transition-all font-medium flex items-center gap-2 relative group hover:shadow-lg hover:shadow-blue-500/50"
             >
@@ -139,7 +69,7 @@ export default function Header() {
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
               </svg>
-            </button>
+            </MagneticButton>
 
             {contactOpen && (
               <div className="absolute top-full right-0 mt-2 w-64 bg-white border border-slate-200 rounded-lg shadow-xl z-50 p-4 space-y-3">
@@ -249,42 +179,16 @@ export default function Header() {
       {isOpen && (
         <div className="md:hidden bg-white border-b border-slate-200 animate-fade-in-down">
           <div className="px-4 py-4 space-y-2 max-w-6xl mx-auto">
-            <button
-              onClick={() => scrollToSection("about")}
-              className="block w-full text-left px-4 py-2 text-slate-700 hover:bg-slate-100 rounded-lg transition-colors font-medium"
-            >
-              About
-            </button>
-            <button
-              onClick={() => scrollToSection("skills")}
-              className="block w-full text-left px-4 py-2 text-slate-700 hover:bg-slate-100 rounded-lg transition-colors font-medium"
-            >
-              Skills
-            </button>
-            <button
-              onClick={() => scrollToSection("experience")}
-              className="block w-full text-left px-4 py-2 text-slate-700 hover:bg-slate-100 rounded-lg transition-colors font-medium"
-            >
-              Experience
-            </button>
-            <button
-              onClick={() => scrollToSection("position-of-responsibility")}
-              className="block w-full text-left px-4 py-2 text-slate-700 hover:bg-slate-100 rounded-lg transition-colors font-medium"
-            >
-              Responsibilities
-            </button>
-            <button
-              onClick={() => scrollToSection("cocurricular-activities")}
-              className="block w-full text-left px-4 py-2 text-slate-700 hover:bg-slate-100 rounded-lg transition-colors font-medium"
-            >
-              Activities
-            </button>
-            <button
-              onClick={() => scrollToSection("projects")}
-              className="block w-full text-left px-4 py-2 text-slate-700 hover:bg-slate-100 rounded-lg transition-colors font-medium"
-            >
-              Projects
-            </button>
+            {navItems.map(item => (
+              <Link
+                key={item.id}
+                to={item.path}
+                onClick={() => setIsOpen(false)}
+                className="block w-full text-left px-4 py-2 text-slate-700 hover:bg-slate-100 rounded-lg transition-colors font-medium text-sm"
+              >
+                {item.label}
+              </Link>
+            ))}
 
             <div className="border-t border-slate-200 my-3"></div>
 

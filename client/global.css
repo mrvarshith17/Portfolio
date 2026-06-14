@@ -232,7 +232,7 @@
     transform: translateX(0);
   }
   100% {
-    opacity: 0;
+    opacity: 1;
     transform: translateX(100%);
   }
 }
@@ -254,7 +254,7 @@
     transform: translateX(0);
   }
   100% {
-    opacity: 0;
+    opacity: 1;
     transform: translateX(-100%);
   }
 }
@@ -286,7 +286,7 @@
     clip-path: polygon(0 50%, 100% 50%, 100% 50%, 0 50%);
   }
   100% {
-    opacity: 0;
+    opacity: 1;
     clip-path: polygon(0 0%, 100% 0%, 100% 0%, 0 0%);
     transform: scaleY(0);
   }
@@ -313,7 +313,7 @@
     transform: scale(1);
   }
   100% {
-    opacity: 0;
+    opacity: 1;
     clip-path: circle(0% at 50% 50%);
     transform: scale(0.8);
   }
@@ -376,7 +376,7 @@
     );
   }
   100% {
-    opacity: 0;
+    opacity: 1;
     clip-path: polygon(
       0% 0%,
       100% 0%,
@@ -413,7 +413,7 @@
     transform: scale(1);
   }
   100% {
-    opacity: 0;
+    opacity: 1;
     background: radial-gradient(ellipse at center, transparent 0%, rgba(255, 255, 255, 1) 100%);
     transform: scale(0.9);
   }
@@ -437,7 +437,7 @@
     clip-path: inset(0 0 0 0);
   }
   100% {
-    opacity: 0;
+    opacity: 1;
     clip-path: inset(0 0 0 100%);
   }
 }
@@ -460,7 +460,7 @@
     clip-path: inset(0 0 0 0);
   }
   100% {
-    opacity: 0;
+    opacity: 1;
     clip-path: inset(0 100% 0 0);
   }
 }
@@ -483,7 +483,7 @@
     clip-path: inset(0 0 0 0);
   }
   100% {
-    opacity: 0;
+    opacity: 1;
     clip-path: inset(0 0 100% 0);
   }
 }
@@ -506,7 +506,7 @@
     clip-path: inset(0 0 0 0);
   }
   100% {
-    opacity: 0;
+    opacity: 1;
     clip-path: inset(100% 0 0 0);
   }
 }
@@ -526,7 +526,46 @@
     opacity: 1;
   }
   100% {
+    opacity: 1;
+  }
+}
+
+/* Liquid/Wave Animations */
+@keyframes section-liquid-wave-in {
+  0% {
     opacity: 0;
+    clip-path: polygon(
+      0% 0%, 5% 2%, 10% 0%, 15% 3%, 20% 0%, 25% 2%, 30% 0%, 35% 3%, 40% 0%, 45% 2%, 50% 0%, 55% 2%, 60% 0%, 65% 3%, 70% 0%, 75% 2%, 80% 0%, 85% 3%, 90% 0%, 95% 2%, 100% 0%,
+      100% 20%, 95% 22%, 90% 20%, 85% 23%, 80% 20%, 75% 22%, 70% 20%, 65% 23%, 60% 20%, 55% 22%, 50% 20%, 45% 22%, 40% 20%, 35% 23%, 30% 20%, 25% 22%, 20% 20%, 15% 23%, 10% 20%, 5% 22%, 0% 20%,
+      0% 50%, 5% 52%, 10% 50%, 15% 53%, 20% 50%, 25% 52%, 30% 50%, 35% 53%, 40% 50%, 45% 52%, 50% 50%, 55% 52%, 60% 50%, 65% 53%, 70% 50%, 75% 52%, 80% 50%, 85% 53%, 90% 50%, 95% 52%, 100% 50%,
+      100% 80%, 95% 82%, 90% 80%, 85% 83%, 80% 80%, 75% 82%, 70% 80%, 65% 83%, 60% 80%, 55% 82%, 50% 80%, 45% 82%, 40% 80%, 35% 83%, 30% 80%, 25% 82%, 20% 80%, 15% 83%, 10% 80%, 5% 82%, 0% 80%,
+      0% 100%, 5% 98%, 10% 100%, 15% 97%, 20% 100%, 25% 98%, 30% 100%, 35% 97%, 40% 100%, 45% 98%, 50% 100%, 55% 98%, 60% 100%, 65% 97%, 70% 100%, 75% 98%, 80% 100%, 85% 97%, 90% 100%, 95% 98%, 100% 100%
+    );
+    transform: translateY(60px);
+  }
+  100% {
+    opacity: 1;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    transform: translateY(0);
+  }
+}
+
+@keyframes section-liquid-wave-out {
+  0% {
+    opacity: 1;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 1;
+    clip-path: polygon(
+      0% 0%, 5% 2%, 10% 0%, 15% 3%, 20% 0%, 25% 2%, 30% 0%, 35% 3%, 40% 0%, 45% 2%, 50% 0%, 55% 2%, 60% 0%, 65% 3%, 70% 0%, 75% 2%, 80% 0%, 85% 3%, 90% 0%, 95% 2%, 100% 0%,
+      100% 20%, 95% 22%, 90% 20%, 85% 23%, 80% 20%, 75% 22%, 70% 20%, 65% 23%, 60% 20%, 55% 22%, 50% 20%, 45% 22%, 40% 20%, 35% 23%, 30% 20%, 25% 22%, 20% 20%, 15% 23%, 10% 20%, 5% 22%, 0% 20%,
+      0% 50%, 5% 52%, 10% 50%, 15% 53%, 20% 50%, 25% 52%, 30% 50%, 35% 53%, 40% 50%, 45% 52%, 50% 50%, 55% 52%, 60% 50%, 65% 53%, 70% 50%, 75% 52%, 80% 50%, 85% 53%, 90% 50%, 95% 52%, 100% 50%,
+      100% 80%, 95% 82%, 90% 80%, 85% 83%, 80% 80%, 75% 82%, 70% 80%, 65% 83%, 60% 80%, 55% 82%, 50% 80%, 45% 82%, 40% 80%, 35% 83%, 30% 80%, 25% 82%, 20% 80%, 15% 83%, 10% 80%, 5% 82%, 0% 80%,
+      0% 100%, 5% 98%, 10% 100%, 15% 97%, 20% 100%, 25% 98%, 30% 100%, 35% 97%, 40% 100%, 45% 98%, 50% 100%, 55% 98%, 60% 100%, 65% 97%, 70% 100%, 75% 98%, 80% 100%, 85% 97%, 90% 100%, 95% 98%, 100% 100%
+    );
+    transform: translateY(-60px);
   }
 }
 
@@ -618,5 +657,166 @@
 
   .section-fade-out {
     animation: section-fade-out 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  .section-liquid-wave-in {
+    animation: section-liquid-wave-in 0.8s ease-out forwards;
+  }
+
+  .section-liquid-wave-out {
+    animation: section-liquid-wave-out 0.8s ease-in forwards;
+  }
+}
+
+/* Wave Overlay Animations */
+@keyframes wave-clip-overlay {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+/* Shared immersive motion */
+.page-motion-root {
+  min-height: 100vh;
+  isolation: isolate;
+  transform-origin: center;
+}
+
+.aurora-background {
+  --parallax-x: 0px;
+  --parallax-y: 0px;
+  --parallax-x-soft: 0px;
+  --parallax-y-soft: 0px;
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background:
+    linear-gradient(135deg, rgba(248, 250, 252, 0.96), rgba(239, 246, 255, 0.88) 42%, rgba(240, 253, 250, 0.78) 70%, rgba(255, 247, 237, 0.7));
+}
+
+.aurora-background::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(15, 23, 42, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.035) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, transparent, black 18%, black 78%, transparent);
+  opacity: 0.35;
+}
+
+.aurora-layer {
+  position: absolute;
+  inset: -28%;
+  filter: blur(34px);
+  opacity: 0.72;
+  will-change: transform, background-position;
+}
+
+.aurora-layer-primary {
+  background:
+    linear-gradient(110deg, transparent 8%, rgba(37, 99, 235, 0.2) 24%, rgba(20, 184, 166, 0.26) 42%, transparent 58%),
+    linear-gradient(72deg, transparent 16%, rgba(124, 58, 237, 0.2) 40%, rgba(245, 158, 11, 0.18) 58%, transparent 78%);
+  background-size: 190% 190%;
+  animation: aurora-ribbon 14s ease-in-out infinite alternate;
+  transform: translate3d(var(--parallax-x), var(--parallax-y), 0) rotate(-4deg);
+}
+
+.aurora-layer-secondary {
+  background:
+    linear-gradient(135deg, transparent 10%, rgba(14, 165, 233, 0.18) 28%, rgba(16, 185, 129, 0.18) 48%, transparent 68%),
+    linear-gradient(45deg, transparent 14%, rgba(99, 102, 241, 0.16) 34%, rgba(244, 114, 182, 0.15) 56%, transparent 76%);
+  background-size: 220% 220%;
+  animation: aurora-ribbon 18s ease-in-out infinite alternate-reverse;
+  transform: translate3d(var(--parallax-x-soft), var(--parallax-y-soft), 0) rotate(6deg);
+}
+
+.aurora-layer-grid {
+  inset: -12%;
+  filter: blur(0);
+  opacity: 0.22;
+  background:
+    linear-gradient(120deg, transparent 0 35%, rgba(37, 99, 235, 0.18) 48%, transparent 62%),
+    linear-gradient(60deg, transparent 0 40%, rgba(20, 184, 166, 0.16) 54%, transparent 68%);
+  background-size: 180% 180%;
+  animation: aurora-ribbon 20s ease-in-out infinite;
+}
+
+@keyframes aurora-ribbon {
+  0% {
+    background-position: 0% 35%;
+  }
+  50% {
+    background-position: 100% 70%;
+  }
+  100% {
+    background-position: 28% 50%;
+  }
+}
+
+.char-reveal {
+  display: block;
+}
+
+.char-reveal > span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.65em) rotateX(28deg);
+  transform-origin: 50% 100%;
+  animation: char-reveal-rise 620ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes char-reveal-rise {
+  to {
+    opacity: 1;
+    transform: translateY(0) rotateX(0deg);
+  }
+}
+
+.section-expand-card {
+  backdrop-filter: blur(16px);
+  box-shadow: 0 12px 40px rgba(15, 23, 42, 0.07);
+}
+
+.project-tilt-shell {
+  perspective: 1200px;
+}
+
+.project-tilt-card {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.project-tilt-pop {
+  transform: translateZ(34px);
+}
+
+.project-tilt-soft {
+  transform: translateZ(18px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aurora-layer,
+  .char-reveal > span,
+  .page-transition-overlay {
+    animation: none !important;
+  }
+
+  .char-reveal > span {
+    opacity: 1;
+    transform: none;
+  }
+
+  .project-tilt-card,
+  .project-tilt-pop,
+  .project-tilt-soft {
+    transform: none !important;
   }
 }

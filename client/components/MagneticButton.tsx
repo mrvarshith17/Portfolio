@@ -1,12 +1,15 @@
 import React, { useRef, useState } from "react";
 
 interface MagneticButtonProps {
-  href: string;
+  href?: string;
   target?: string;
   rel?: string;
   children: React.ReactNode;
   className?: string;
   icon?: React.ReactNode;
+  onClick?: () => void;
+  type?: "button" | "submit" | "reset";
+  ariaLabel?: string;
 }
 
 export default function MagneticButton({
@@ -16,11 +19,14 @@ export default function MagneticButton({
   children,
   className = "",
   icon,
+  onClick,
+  type = "button",
+  ariaLabel,
 }: MagneticButtonProps) {
-  const buttonRef = useRef<HTMLAnchorElement>(null);
+  const buttonRef = useRef<HTMLAnchorElement | HTMLButtonElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
     if (!buttonRef.current) return;
 
     const rect = buttonRef.current.getBoundingClientRect();
@@ -31,7 +37,7 @@ export default function MagneticButton({
     const distanceY = e.clientY - centerY;
     const distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
 
-    if (distance < 150) {
+    if (distance > 0 && distance < 150) {
       const force = (150 - distance) / 150;
       const moveX = (distanceX / distance) * force * 20;
       const moveY = (distanceY / distance) * force * 20;
@@ -44,19 +50,42 @@ export default function MagneticButton({
     setPosition({ x: 0, y: 0 });
   };
 
+  const sharedProps = {
+    onMouseMove: handleMouseMove,
+    onMouseLeave: handleMouseLeave,
+    style: {
+      transform: `translate(${position.x}px, ${position.y}px)`,
+      transition: "transform 0.2s ease-out",
+    },
+    className: `inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-300 hover:shadow-lg ${className}`,
+    "aria-label": ariaLabel,
+  };
+
+  if (!href) {
+    return (
+      <button
+        ref={buttonRef as React.RefObject<HTMLButtonElement>}
+        type={type}
+        onClick={onClick}
+        {...sharedProps}
+      >
+        {icon}
+        {children}
+      </button>
+    );
+  }
+
   return (
     <a
-      ref={buttonRef}
+      ref={buttonRef as React.RefObject<HTMLAnchorElement>}
       href={href}
       target={target}
       rel={rel}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      style={{
-        transform: `translate(${position.x}px, ${position.y}px)`,
-        transition: "transform 0.2s ease-out",
-      }}
-      className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-300 hover:shadow-lg ${className}`}
+      style={sharedProps.style}
+      className={sharedProps.className}
+      aria-label={ariaLabel}
     >
       {icon}
       {children}
