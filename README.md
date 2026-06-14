@@ -1,108 +1,95 @@
 🚀 Pundru Varshith Portfolio
 
-A modern, immersive, and highly interactive developer portfolio built to showcase my skills, projects, experience, and technical journey as a Full Stack Developer.
+A modern, interactive, and animation-rich developer portfolio built with React, TypeScript, Vite, Framer Motion, and Tailwind CSS. This portfolio showcases my technical skills, projects, experience, leadership roles, and extracurricular achievements through immersive page transitions and a responsive user experience.
 
-🌐 Live Website: https://portfolio-three-gules-33.vercel.app/
+🌐 Live Demo: https://portfolio-three-gules-33.vercel.app/
 
-✨ Overview
+✨ Features
 
-This portfolio is designed as a premium developer experience featuring smooth animations, advanced section transitions, interactive UI elements, and a responsive design optimized for all devices.
-
-The website highlights:
-
-- Professional Experience
-- Technical Skills
-- Featured Projects
-- Education
-- Leadership & Responsibilities
-- Contact Information
-- Resume Access
-
----
-
-🎯 Key Features
-
-Modern User Experience
-
-- Responsive design for desktop, tablet, and mobile
-- Dark-themed developer aesthetic
+- Multi-page portfolio architecture
+- Custom wave transition system between pages
+- Route-based animations powered by Framer Motion
+- Unique transition effects for different sections
+- Responsive design for desktop, tablet, and mobile devices
+- Modern UI built using Tailwind CSS and Radix UI
+- Interactive project showcase
 - Smooth navigation experience
-- Fully optimized layout
+- Type-safe development using TypeScript
+- Optimized performance with Vite
 
-Advanced Animations
+📄 Pages
 
-- Section transition effects
-- Scroll-triggered animations
-- Staggered content reveals
-- Interactive hover effects
-- Enhanced button animations
-- Smooth motion interactions
-
-Portfolio Sections
-
-- Hero Section
-- About Me
+- Home
+- About
 - Skills
 - Experience
+- Position of Responsibility
+- Activities
 - Projects
-- Education
-- Contact
-- Footer
 
----
-
-🛠 Tech Stack
+🛠️ Tech Stack
 
 Frontend
 
-- React
+- React 18
 - TypeScript
 - Vite
-- Tailwind CSS
+- React Router DOM
 
-UI & Animation
+Styling & UI
+
+- Tailwind CSS
+- Radix UI
+- Lucide React
+
+Animations
 
 - Framer Motion
-- Advanced Section Transition System
-- Custom Animation Components
-- Interactive Motion Effects
+- Custom Wave Overlay Transitions
 
-Development Tools
+State Management & Utilities
 
-- Git
-- GitHub
-- ESLint
-- TypeScript
+- TanStack React Query
+- React Hook Form
+- Zod
+
+3D & Visual Libraries
+
+- Three.js
+- React Three Fiber
+- Drei
 
 Deployment
 
 - Vercel
-
----
 
 📂 Project Structure
 
 Portfolio/
 ├── app/
 ├── client/
-├── components/
-├── lib/
+│   ├── components/
+│   ├── context/
+│   ├── hooks/
+│   ├── lib/
+│   ├── pages/
+│   ├── App.tsx
+│   └── global.css
+├── components/ui/
 ├── public/
 ├── scripts/
 ├── server/
 ├── shared/
-├── README.md
-└── package.json
-
----
+├── package.json
+└── README.md
 
 🚀 Getting Started
 
-Clone Repository
+Clone the Repository
 
 git clone https://github.com/mrvarshith17/Portfolio.git
 
-Navigate to Project
+Navigate to the Project
 
 cd Portfolio
 
@@ -118,51 +105,28 @@ Build for Production
 
 npm run build
 
----
+Start Production Build
+
+npm start
+
+🎯 Highlights
+
+- Dedicated pages for every major section instead of a traditional scrolling portfolio
+- Page-specific animation styles and transition effects
+- Wave-based transition overlay for seamless navigation
+- Modern developer-focused UI and UX
+- Fully responsive design optimized for multiple screen sizes
+- Scalable component-based architecture
 
 👨‍💻 About Me
 
-I am Pundru Varshith, a Full Stack Developer and Electronics & Communication Engineering graduate from NIT Silchar.
-
-My interests include:
-
-- Full Stack Development
-- System Design
-- Scalable Web Applications
-- UI/UX Engineering
-- Data Structures & Algorithms
-
----
-
-📌 Featured Work
-
-Startup Connect
-
-A founder-investor collaboration platform featuring authentication, role-based access control, and real-time communication.
-
-Real Estate Platform
-
-A full-stack property management and listing application built using modern web technologies.
-
-MERN E-Commerce Platform
-
-An end-to-end e-commerce solution with authentication, cart management, and payment integration.
-
----
-
-🌐 Live Demo
-
-Visit the deployed portfolio:
-
-https://portfolio-three-gules-33.vercel.app/
-
----
+I'm Pundru Varshith, a B.Tech graduate in Electronics and Communication Engineering from NIT Silchar with a strong interest in Full Stack Development, System Design, UI Engineering, and building scalable web applications.
 
 📫 Connect With Me
 
-Email
+Portfolio
 
-pundruvarshith17@gmail.com
+https://portfolio-three-gules-33.vercel.app/
 
 GitHub
 
@@ -172,149 +136,16 @@ LinkedIn
 
 https://www.linkedin.com/in/varshith-pundru-1861392a6/
 
-Portfolio
+Email
 
-https://portfolio-three-gules-33.vercel.app/
-
----
+pundruvarshith17@gmail.com
 
 ⭐ Support
 
-If you found this project helpful, please consider giving the repository a star.
+If you like this project, consider giving it a star on GitHub.
 
 ⭐ Star this repository
-
----
 
 📄 License
 
 This project is licensed under the MIT License.
----
-
-## ✨ Features
-
-* Modern and responsive design
-* Smooth animations and transitions
-* Interactive project showcase
-* Skills and technology stack section
-* Education and experience timeline
-* Contact form integration
-* Resume download functionality
-* Optimized for desktop, tablet, and mobile devices
-
----
-
-## 🛠️ Tech Stack
-
-### Frontend
-
-* React.js
-* Vite
-* JavaScript
-* HTML5
-* CSS3
-* Tailwind CSS
-
-### Libraries & Tools
-
-* Framer Motion
-* React Icons
-* React Scroll
-* EmailJS
-* Git
-* GitHub
-
-### Deployment
-
-* Vercel
-
----
-
-## 📂 Project Structure
-
-```bash
-Portfolio/
-├── public/
-├── src/
-│   ├── components/
-│   ├── assets/
-│   ├── data/
-│   ├── App.jsx
-│   └── main.jsx
-├── package.json
-├── vite.config.js
-└── README.md
-```
-
----
-
-## 🚀 Getting Started
-
-### Clone the Repository
-
-```bash
-git clone https://github.com/mrvarshith17/Portfolio.git
-```
-
-### Navigate to Project Directory
-
-```bash
-cd Portfolio
-```
-
-### Install Dependencies
-
-```bash
-npm install
-```
-
-### Start Development Server
-
-```bash
-npm run dev
-```
-
-Open:
-
-```text
-http://localhost:5173
-```
-
----
-
-## 📸 Sections Included
-
-* Hero Section
-* About Me
-* Skills
-* Experience
-* Projects
-* Education
-* Contact
-* Footer
-
----
-
-## 👨‍💻 About Me
-
-I am **Pundru Varshith**, a Full Stack Developer and Electronics & Communication Engineering student at NIT Silchar. I enjoy building scalable web applications, solving DSA problems, and creating intuitive user experiences.
-
----
-
-## 📫 Connect With Me
-
-* Email: [pundruvarshith17@gmail.com](mailto:pundruvarshith17@gmail.com)
-* GitHub: https://github.com/mrvarshith17
-* Portfolio: https://portfolio-three-gules-33.vercel.app/
-
----
-
-## ⭐ Support
-
-If you like this project, consider giving it a **Star ⭐** on GitHub.
-
----
-
-## 📄 License
-
-This project is open source and available under the MIT License.
