@@ -63,8 +63,9 @@ Deployment
 
 - Vercel
 
-📂 Project Structure
+## 📂 Project Structure
 
+```text
 Portfolio/
 ├── app/
 ├── client/
@@ -75,13 +76,15 @@ Portfolio/
 │   ├── pages/
 │   ├── App.tsx
 │   └── global.css
-├── components/ui/
+├── components/
+│   └── ui/
 ├── public/
 ├── scripts/
 ├── server/
 ├── shared/
 ├── package.json
 └── README.md
+```
 
 🚀 Getting Started
 
