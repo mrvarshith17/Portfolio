@@ -15,7 +15,7 @@ export default function SectionWrapper({
   bgColor = 'bg-white' 
 }: SectionWrapperProps) {
   const { activeSection, exitingSection, animationType, setExitingSection } = useSectionContext();
-  const [isVisible, setIsVisible] = useState(id === 'about' || id === null);
+  const [isVisible, setIsVisible] = useState(true); // All sections visible by default for scrolling
   const isActive = activeSection === id;
   const isExiting = exitingSection === id;
 
@@ -25,12 +25,11 @@ export default function SectionWrapper({
     }
   }, [isActive]);
 
-  // Clear exiting section after animation completes
+  // Clear exiting section after animation completes (keep section visible)
   useEffect(() => {
     if (isExiting) {
       const timer = setTimeout(() => {
         setExitingSection(null);
-        setIsVisible(false);
       }, 600); // Match animation duration
       return () => clearTimeout(timer);
     }
@@ -79,8 +78,8 @@ export default function SectionWrapper({
         isActive ? getEnterAnimation() : isExiting ? getExitAnimation() : ''
       }`}
       style={{
-        opacity: isActive ? 1 : isExiting ? 0 : 0,
-        pointerEvents: isActive ? 'auto' : 'none',
+        opacity: 1, // Always visible for scrolling
+        pointerEvents: 'auto', // Always interactive
       }}
     >
       {children}
